@@ -1,0 +1,43 @@
+2h
+1 Tuas
+2 Jurong Island
+3 Western Islands
+4 Boon Lay
+5 Pioneer 
+6 Jurong West
+7 Jalan Bahar
+8 Tengah
+9 Sungei Kadut
+10 Woodlands
+11 Sembawang
+12 Mandai
+13 Yishun
+14 Choa Chu Kang
+15 Jurong East
+16 Clementi 
+17 Queenstown
+18 Bukit Merah
+19 Sentosa
+20 
+
+rainfall
+1 Tuas road
+2 Banyan Road
+3 Semakau Landfill
+4 Jurong Pier Road
+5 Tuas South Avenue 3
+6 S228
+7 Nanyang Avenue
+8 Old Choa Chu Kang Road
+9 Woodlands Road
+10 Woodlands Avenue 9
+11 S227
+12 S227 check again ^
+13 S209
+14 Choa Chu Kang Avenue 4
+15 Old Toh Tuck Road
+16 S202
+17 Kent Ridge Road
+18 S226
+19 Sentosa
+20 
