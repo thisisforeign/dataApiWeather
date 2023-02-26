@@ -21,20 +21,10 @@ function App() {
 
   const urlWeather = 'https://api.data.gov.sg/v1/environment/2-hour-weather-forecast';
   const urlRainfall = 'https://api.data.gov.sg/v1/environment/rainfall';
- 
-  //let areasWeather, specAreaWeather;
-  //let rainfall;
-  //let timeStamp, formattedTime;
+
   let currentTime;
-  //let weatherCoordinates, specWCoordinates;
-  //let wLatitude, wLongitude;
-  //let rFCoordinates, allRFLatitude, allRFLongitude;
-  //let rFLatitude, rFLongitude;
-  //let specRFCoordinates, specRFCoordinatesID;
   let curr, prev = 100, count; //since the distance wont be more than 100 because they are fixed
-  //let specRFReading, specRainfall;
   const defaultArea = "Tampines";
-  //let defaultWCoordinates, defaultLatitude, defaultLongitude;
 
   function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) { //used to determine closest marker between APIs
     const R = 6371; // Radius of the earth in km
