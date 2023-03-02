@@ -3,16 +3,10 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 function App() {
-  //const apiRF = "https://api.data.gov.sg/v1/environment/rainfall";
-  //const apiW2h = "https://api.data.gov.sg/v1/environment/2-hour-weather-forecast";
-  //const apiRH = "https://api.data.gov.sg/v1/environment/relative-humidity";
-  //const apiWD = "https://api.data.gov.sg/v1/environment/wind-direction";
-  //const apiWS = "https://api.data.gov.sg/v1/environment/wind-speed";
-
   const [search, setSearch] = useState("");
-  const [location, setLocation] = useState([]);
   const [clock, setClock] = useState("");
   const [time, setTime] = useState("");
+  const [validTime, setValidTime] = useState("")
   const [defaultForecast, setDefaultForecast] = useState("");
   const [toggleDefault, setToggleDefault] = useState(false);
   const [forecast, setForecast] = useState("");
@@ -59,12 +53,14 @@ function App() {
         const specAreaWeather = areasWeather.filter(
           (areaW) => areaW.area.toLowerCase() === value.toLowerCase()
         );
-        setLocation(specAreaWeather[0].area);
         setForecast(specAreaWeather[0].forecast);
 
         const timeStamp = response.data.items[0].timestamp;
+        const timeStampValid = response.data.items[0].valid_period.end;
         const formattedTime = new Date(timeStamp).toLocaleString("en-GB");
+        const formatTimeValid = new Date(timeStampValid).toLocaleString("en-GB");
         setTime(formattedTime);
+        setValidTime(formatTimeValid);
 
         const weatherCoordinates = response.data.area_metadata;
         const specWCoordinates = weatherCoordinates.filter(
@@ -109,13 +105,17 @@ function App() {
           );
           const specRainfall = specRFReading[0].value;
           setRf(specRainfall);
+
+          setClock(new Date().toLocaleString('en-GB'));
+
+          console.log(areasWeather);
+          console.log(rainfall);
         });
       })
       .catch((error) => {
         console.log(error);
       });
 
-    setSearch("");
   };
 
   const justLoaded = () => {
@@ -133,17 +133,17 @@ function App() {
           (areaC) => areaC.name.toLowerCase() === defaultArea.toLowerCase()
         );
         const defaultLatitude = defaultWCoordinates[0].label_location.latitude;
-        const defaultLongitude =
-          defaultWCoordinates[0].label_location.longitude;
+        const defaultLongitude = defaultWCoordinates[0].label_location.longitude;
 
         const listOfAreas = weatherCoordinates.map((wc) => wc.name);
         setArrayOfAreas(listOfAreas);
-        console.log(weatherCoordinates);
-        console.log(listOfAreas);
 
         const timeStamp = response.data.items[0].timestamp;
+        const timeStampValid = response.data.items[0].valid_period.end;
         const formattedTime = new Date(timeStamp).toLocaleString("en-GB");
+        const formatTimeValid = new Date(timeStampValid).toLocaleString("en-GB");
         setTime(formattedTime);
+        setValidTime(formatTimeValid);
 
         axios.get(urlRainfall).then((response) => {
           const rainfall = response.data.items[0].readings;
@@ -181,6 +181,12 @@ function App() {
           );
           const specRainfall = specRFReading[0].value;
           setDefaultRF(specRainfall);
+
+          setClock(new Date().toLocaleString('en-GB'));
+
+          console.log(listOfAreas);
+          console.log(areasWeather);
+          console.log(rainfall);
         });
       })
       .catch((error) => {
@@ -206,15 +212,14 @@ function App() {
     return (
       <div className="dropdownContainer">
         <select
-          value={search}
+          value={toggleDefault === false ? "Tampines" : search}
           onChange={(e) => {
             inputChange(e);
             apiCall(e.target.value);
           }}
-          className="listItems"
         >
           {arrayOfAreas.map((item, index) => (
-            <option value={item} key={index}>
+            <option value={item} key={index} className="listItems">
               {item}
             </option>
           ))}
@@ -225,39 +230,9 @@ function App() {
 
   return (
     <div className="app">
-      <div className="container">
-        <input
-          autoFocus
-          type="text"
-          name="text"
-          value={search}
-          className="searchInput"
-          onChange={(e) => inputChange(e)}
-          onKeyDown={apiCall}
-          placeholder="Enter location"
-          autoComplete="on"
-        />
-      </div>
-
-      {/* <div>
-      <select value={search} onChange={inputChange}>
-        <option value="">Select an option</option>
-        <option value="option1">Option 1</option>
-        <option value="option2">Option 2</option>
-        <option value="option3">Option 3</option>
-      </select>
-      <p>You selected: {search}</p>
-      </div> */}
-
-      <DropdownMenu />
-
       <div className="infoContainer">
         <div className="location">
-          {toggleDefault === false ? (
-            <p>Location: {defaultArea}</p>
-          ) : (
-            <p>Location: {location}</p>
-          )}
+          <div className="locationContainer">Location: <DropdownMenu /></div>
         </div>
         <div className="rainFall">
           {toggleDefault === false ? (
@@ -275,7 +250,8 @@ function App() {
         </div>
         <div className="time">
           <p>Current time: {clock}</p>
-          <p>Updated at: {time}</p>
+          <p>API updated at: {time}</p>
+          <p>Valid till: {validTime}</p>
         </div>
       </div>
     </div>
