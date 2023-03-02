@@ -1,5 +1,8 @@
 # dataApiWeather
 
+![image](https://user-images.githubusercontent.com/109660863/222370342-16bced87-cecc-42aa-bfef-9afc7b48d0c3.png)
+
+
 For vulnerability issues: https://github.com/facebook/create-react-app/issues/11174
 
 Received a Error: error:0308010C:digital envelope routines::unsupported and couldn't find a fix besides: https://stackoverflow.com/questions/69692842/error-message-error0308010cdigital-envelope-routinesunsupported
