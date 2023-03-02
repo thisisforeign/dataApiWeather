@@ -5,7 +5,6 @@ body{
     background-color: rgb(34, 34, 192);
     color: white;
     font-family: 'Roboto Mono', monospace;
-
 }
 
 .container{
@@ -35,3 +34,47 @@ body{
     flex-direction: column;
     align-items: center;
 }
+
+.dropdownContainer{
+    display: flex;
+    justify-content: center;
+}
+
+.listItems{
+    list-style-type: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.199);
+}
+
+/* .dataContainer{
+    display: flex;
+    justify-content: center;
+}
+
+.dataResult{
+    margin-top: 5px;
+    width: 250px;
+    height: 200px;
+    overflow: hidden;
+    overflow-y: auto;
+    background-color: white;
+    font-weight: bold;
+}
+
+.dataResult .dataItem{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    color: black;
+}
+
+.dataResult::-webkit-scrollbar {
+    display: none;
+}
+
+.dataItem p{
+    margin-left: 10px;
+}
+
+a:hover{
+    background-color: grey;
+} */
