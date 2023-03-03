@@ -1,6 +1,9 @@
 # dataApiWeather
 
 ![image](https://user-images.githubusercontent.com/109660863/222370342-16bced87-cecc-42aa-bfef-9afc7b48d0c3.png)
+![image](https://user-images.githubusercontent.com/109660863/222735083-1f78a597-889e-430a-9d5a-58d6d7a403fc.png)
+![image](https://user-images.githubusercontent.com/109660863/222735111-3129c9c3-273d-4568-b49c-e1312098cd44.png)
+
 
 
 For vulnerability issues: https://github.com/facebook/create-react-app/issues/11174
